@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
+import Loader from 'react-loader-spinner'
 
 export default (props) =>{
 
-    const [quote , setQuote ] = useState('to be or not to be');
-    const [author , setAuthor ] = useState('me');
+    const [quote , setQuote ] = useState('');
+    const [author , setAuthor ] = useState('');
 
     useEffect(() => {getQuote()}, []);
 
@@ -27,11 +28,16 @@ export default (props) =>{
     return(
     <div style={{background:'blue'}}>
         <h1>Get Quote Page</h1>
-        <p>{quote}</p>
-        <p>-- {author}</p>
-        <button onClick={() => props.saveQuote({text: quote, author: author})}>Save Quote!</button>
-        <br/>
-        <button onClick={getQuote}>More Quotes!</button>
+        {quote === '' ?
+        <Loader type='Puff' color='#FFFFFF' height={200} width={200}/>
+        : <div>
+            <p>{quote}</p>
+            <p>-- {author}</p>
+            <button onClick={() => props.saveQuote({text: quote, author: author})}>Save Quote!</button>
+            <br/>
+            <button onClick={getQuote}>More Quotes!</button>
+        </div>
+        }
         </div>
 )
 }

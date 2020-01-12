@@ -6,8 +6,8 @@ export default (props) =>{
     <div style={{background:'purple'}}>
         <h1>Saved Quotes Page</h1>
         {/* could use foreach but this is an efficient way to create codeblocks with inputted quotes */}
-        {props.savedQuotes.map(quote => (
-             <div style={{background: 'lightgrey', margin:'10px'}}>
+        {props.savedQuotes.map((quote,index) => (
+             <div key={index} style={{background: 'black', margin:'10px'}}>
                 <p>{quote.text}</p>
                 <p>-- {quote.author}</p>
              </div>
