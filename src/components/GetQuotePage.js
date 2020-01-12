@@ -3,7 +3,6 @@ import axios from 'axios'
 import Loader from 'react-loader-spinner'
 
 export default (props) =>{
-
     const [quote , setQuote ] = useState('');
     const [author , setAuthor ] = useState('');
 
@@ -32,9 +31,8 @@ export default (props) =>{
         <Loader type='Puff' color='#FFFFFF' height={200} width={200}/>
         : <div>
             <p>{quote}</p>
-            <p>-- {author}</p>
+            <p>-- {author === '' ? 'Unknown' : author}</p>
             <button onClick={() => props.saveQuote({text: quote, author: author})}>Save Quote!</button>
-            <br/>
             <button onClick={getQuote}>More Quotes!</button>
         </div>
         }
