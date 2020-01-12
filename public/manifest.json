@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Quipy",
+  "name": "Generate and Store Clever Quotes",
   "icons": [
     {
       "src": "favicon.ico",
