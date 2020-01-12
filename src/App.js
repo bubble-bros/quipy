@@ -16,12 +16,25 @@ function App() {
   const quotesServerRef = 'savedQuotes';
 
   const saveQuote = (newQuote) => {
-    const newSavedQuotes = [...savedQuotes, newQuote];
-    setSavedQuotes(newSavedQuotes);
-    console.log(newSavedQuotes);
+    const newSavedQuotes = [...savedQuotes, {...newQuote, id: savedQuotes.length}];
+    updateSavedQuotes(newSavedQuotes);
+  }
+
+  const deleteQuote = (deleteIndex) => {
+    const newSavedQuotes = savedQuotes.filter(quote => quote.id !== deleteIndex);
+    updateSavedQuotes(newSavedQuotes);
+  }
+
+  const setSavedQuotesOnServer = (newSavedQuotes) => {
     database
-      .ref(quotesServerRef)
-      .set(newSavedQuotes);
+    .ref(quotesServerRef)
+    .set(newSavedQuotes);
+  }
+
+  const updateSavedQuotes = (newSavedQuotes) => {
+    const newOrderedSavedQuotes = newSavedQuotes.map((quote, index) => ({...quote, id: index}));
+    setSavedQuotes(newOrderedSavedQuotes);
+    setSavedQuotesOnServer(newOrderedSavedQuotes);
   }
 
   const getSavedQuotesFromServer = () => {
@@ -44,7 +57,7 @@ function App() {
         <GetQuotePage saveQuote={saveQuote}/> :
         (pageIndex === 1) ? 
         <EnterQuotePage saveQuote={saveQuote}/> :
-        <SavedQuotesPage savedQuotes={savedQuotes}/>        
+        <SavedQuotesPage savedQuotes={savedQuotes} deleteQuote={deleteQuote}/>        
         }
       </header>
     </div>
