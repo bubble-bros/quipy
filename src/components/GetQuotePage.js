@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 
-export default () =>{
+export default (props) =>{
 
     const [quote , setQuote ] = useState('to be or not to be');
     const [author , setAuthor ] = useState('me');
@@ -29,11 +29,9 @@ export default () =>{
         <h1>Get Quote Page</h1>
         <p>{quote}</p>
         <p>-- {author}</p>
-        <button onClick={getQuote}>Save Quote!</button>
+        <button onClick={() => props.saveQuote({text: quote, author: author})}>Save Quote!</button>
         <br/>
         <button onClick={getQuote}>More Quotes!</button>
         </div>
-
-
 )
 }

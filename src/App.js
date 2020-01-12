@@ -11,15 +11,21 @@ function App() {
 
   const [pageIndex, setPageIndex] = useState(0);
 
+  const [savedQuotes, setSavedQuotes] = useState([{text: 'wassup', author: 'me'},{text: 'sheeeee', author: 'phil'}])
+
+  const saveQuote = (newQuote) => {
+    setSavedQuotes([...savedQuotes, newQuote]);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <Navigation setPageIndex={setPageIndex}/>
         {(pageIndex === 0) ? 
-        <GetQuotePage/> :
+        <GetQuotePage saveQuote={saveQuote}/> :
         (pageIndex === 1) ? 
-        <EnterQuotePage/> :
-        <SavedQuotesPage/>        
+        <EnterQuotePage saveQuote={saveQuote}/> :
+        <SavedQuotesPage savedQuotes={savedQuotes}/>        
         }
       </header>
     </div>
