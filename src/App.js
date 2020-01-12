@@ -11,7 +11,7 @@ function App() {
 
   const [pageIndex, setPageIndex] = useState(0);
 
-  const [savedQuotes, setSavedQuotes] = useState([{text: 'wassup', author: 'me'},{text: 'sheeeee', author: 'phil'}])
+  const [savedQuotes, setSavedQuotes] = useState([])
 
   const saveQuote = (newQuote) => {
     setSavedQuotes([...savedQuotes, newQuote]);
