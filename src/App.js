@@ -9,7 +9,7 @@ import {database} from './firebase';
 
 function App() {
 
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(2);
 
   const [savedQuotes, setSavedQuotes] = useState([])
 
@@ -51,7 +51,6 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
         <Navigation setPageIndex={setPageIndex}/>
         {(pageIndex === 0) ? 
         <GetQuotePage saveQuote={saveQuote}/> :
@@ -59,7 +58,6 @@ function App() {
         <EnterQuotePage saveQuote={saveQuote}/> :
         <SavedQuotesPage savedQuotes={savedQuotes} deleteQuote={deleteQuote}/>        
         }
-      </header>
     </div>
   );
 }
