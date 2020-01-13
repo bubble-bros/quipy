@@ -15,15 +15,11 @@ export default (props) =>{
     }
 
     return(
-    <div style={{background:'indigo'}}>
-        
-        <h1>Enter Quote Page</h1>
-
-        <form onSubmit={handleSubmit}>
-            <input placeholder='Enter quote...' name='text' value={enteredQuote.text} onChange={event => handleChange(event)}/>
-            <input placeholder='Enter author...' name='author' value={enteredQuote.author} onChange={event => handleChange(event)}/>
-            <br/>
-            <button type='submit'>Save Quote</button>
+    <div className='page'>
+        <form onSubmit={handleSubmit} className='enterQuoteForm'>
+            <input className='quoteInput quoteTextInput' placeholder='Enter quote...' name='text' value={enteredQuote.text} onChange={event => handleChange(event)}/>
+            <input className='quoteInput' placeholder='Enter author...' name='author' value={enteredQuote.author} onChange={event => handleChange(event)}/>
+            <button className='button' type='submit'>Save Quote</button>
         </form>
         </div>
 )

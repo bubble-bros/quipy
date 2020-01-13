@@ -16,15 +16,14 @@ export default (props) =>{
     },[props.savedQuotes, searchText])
     
     return(
-    <div style={{background:'purple'}}>
-        <h1>Saved Quotes Page</h1>
-        <input placeholder='Search...' onChange={handleChange}/>
+    <div className='page savedPage'>
+        <input className='searchQuote' placeholder='Search...' onChange={handleChange}/>
         {/* could use foreach but this is an efficient way to create codeblocks with inputted quotes */}
         {displayedQuotes.map((quote,index) => (
-             <div key={index} style={{background: 'black', margin:'10px'}}>
+             <div key={index} className='quoteCard'>
+                <button className='deleteButton' onClick={() => props.deleteQuote(quote.id)}>X</button>
                 <p>{quote.text}</p>
                 <p>-- {quote.author === '' ? 'Unknown' : quote.author}</p>
-                <button onClick={() => props.deleteQuote(quote.id)}>x</button>
              </div>
         ))}       
     </div>

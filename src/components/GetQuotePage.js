@@ -25,17 +25,18 @@ export default (props) =>{
     }
 
     return(
-    <div style={{background:'blue'}}>
-        <h1>Get Quote Page</h1>
-        {quote === '' ?
-        <Loader type='Puff' color='#FFFFFF' height={200} width={200}/>
-        : <div>
-            <p>{quote}</p>
-            <p>-- {author === '' ? 'Unknown' : author}</p>
-            <button onClick={() => props.saveQuote({text: quote, author: author})}>Save Quote!</button>
-            <button onClick={getQuote}>More Quotes!</button>
+        <div>
+            {quote === '' ?
+            <Loader type='Puff' color='#FFFFFF' height={200} width={200}/>
+            : <div className='page'>
+                <div className='quoteCard'>
+                    <p>{quote}</p>
+                    <p className='author'>-- {author === '' ? 'Unknown' : author}</p>
+                    <button className='button' onClick={() => props.saveQuote({text: quote, author: author})}>Save Quote!</button>
+                </div>
+                <button className='button' onClick={getQuote}>More Quotes!</button>
+            </div>
+            }
         </div>
-        }
-        </div>
-)
+    )
 }
